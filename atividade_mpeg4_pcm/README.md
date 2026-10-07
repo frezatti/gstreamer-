@@ -90,6 +90,14 @@ O script compara os formatos e a duração dos dois WAVs. Para confirmar que tod
 
 ## Abrir os diagramas e preparar a apresentação
 
+Os diagramas editáveis para [Excalidraw](https://excalidraw.com/) estão nestes arquivos:
+
+- [Vídeo H.264](diagramas/video.excalidraw)
+- [Áudio PCM A](diagramas/audio_a.excalidraw)
+- [Áudio PCM B](diagramas/audio_b.excalidraw)
+
+Importe o arquivo `.excalidraw` correspondente no Excalidraw para editar os elementos, as propriedades e as conexões. Os três diagramas representam os ramos da mesma pipeline: vídeo e áudio compartilham uma fonte `uridecodebin` em cada execução de A ou B. As conexões dinâmicas do sinal `pad-added` aparecem tracejadas.
+
 Abra [pipelines.drawio](diagramas/pipelines.drawio) em [diagrams.net](https://app.diagrams.net/) com **Arquivo → Abrir de → Dispositivo**. O arquivo contém três páginas, para vídeo, áudio A e áudio B.
 
 As mesmas arquiteturas também estão disponíveis em SVG:
