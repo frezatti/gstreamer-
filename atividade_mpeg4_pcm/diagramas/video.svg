@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1830" viewBox="0 0 1000 1830">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#4b5563"/></marker></defs>
+<g font-family="DejaVu Sans, sans-serif" fill="#111827">
+<text x="40" y="45" font-size="22" font-weight="bold">Video H.264 e comparacao lado a lado</text>
+<text x="40" y="75" font-size="13">Video e audio pertencem a uma unica pipeline em cada execucao de A ou B.</text>
+<polyline points="500.0,195 500.0,230" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,295 500.0,330" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,415 500.0,450" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,505 500.0,540" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,595 500.0,630" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,685 500.0,720" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,775 500.0,810" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,865 500,887 250,887 250.0,910" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,865 500,887 750,887 750.0,910" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="250.0,965 250,1378 400,1378 400,1410" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="255" y="1365" font-size="12">mix.sink_0</text>
+<polyline points="750.0,965 750.0,1000" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="750.0,1055 750.0,1090" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="750.0,1145 750.0,1180" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="750.0,1235 750.0,1270" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="750.0,1345 750,1378 600,1378 600,1410" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="670" y="1365" font-size="12">mix.sink_1</text>
+<polyline points="500.0,1500 500.0,1535" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,1590 500.0,1625" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polyline points="500.0,1680 500.0,1715" fill="none" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrow)"/>
+<rect x="150" y="105" width="700" height="90" fill="#e8f1e8" stroke="#6b7280"/>
+<text x="500.0" y="135.0" text-anchor="middle" font-size="13" font-weight="bold">videotestsrc</text>
+<text x="500.0" y="155.0" text-anchor="middle" font-size="13" font-weight="normal">pattern=ball | num-buffers=300</text>
+<text x="500.0" y="175.0" text-anchor="middle" font-size="13" font-weight="normal">foreground-color=0xffff0000 | background-color=0xff203060</text>
+<rect x="150" y="230" width="700" height="65" fill="#f1f1f1" stroke="#6b7280"/>
+<text x="500.0" y="257.5" text-anchor="middle" font-size="13" font-weight="bold">video/x-raw</text>
+<text x="500.0" y="277.5" text-anchor="middle" font-size="13" font-weight="normal">format=I420 | 640x480 | framerate=30/1</text>
+<rect x="150" y="330" width="700" height="85" fill="#eee9f4" stroke="#6b7280"/>
+<text x="500.0" y="357.5" text-anchor="middle" font-size="13" font-weight="bold">x264enc name=codificador</text>
+<text x="500.0" y="377.5" text-anchor="middle" font-size="13" font-weight="normal">tune=zerolatency | speed-preset=ultrafast</text>
+<text x="500.0" y="397.5" text-anchor="middle" font-size="13" font-weight="normal">bitrate=1000 kbit/s</text>
+<rect x="150" y="450" width="700" height="55" fill="#eee9f4" stroke="#6b7280"/>
+<text x="500.0" y="472.5" text-anchor="middle" font-size="13" font-weight="bold">h264parse name=h264</text>
+<text x="500.0" y="492.5" text-anchor="middle" font-size="13" font-weight="normal">Fluxo comprimido: video/x-h264</text>
+<rect x="150" y="540" width="700" height="55" fill="#eee9f4" stroke="#6b7280"/>
+<text x="500.0" y="562.5" text-anchor="middle" font-size="13" font-weight="bold">avdec_h264 name=decodificador</text>
+<text x="500.0" y="582.5" text-anchor="middle" font-size="13" font-weight="normal">Decodifica H.264 para video bruto</text>
+<rect x="150" y="630" width="700" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="500.0" y="662.5" text-anchor="middle" font-size="13" font-weight="bold">videoconvert</text>
+<rect x="150" y="720" width="700" height="55" fill="#f1f1f1" stroke="#6b7280"/>
+<text x="500.0" y="752.5" text-anchor="middle" font-size="13" font-weight="bold">video/x-raw,format=RGB</text>
+<rect x="150" y="810" width="700" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="500.0" y="832.5" text-anchor="middle" font-size="13" font-weight="bold">tee name=v</text>
+<text x="500.0" y="852.5" text-anchor="middle" font-size="13" font-weight="normal">Uma fonte; dois ramos</text>
+<rect x="70" y="910" width="360" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="250.0" y="932.5" text-anchor="middle" font-size="13" font-weight="bold">v. ! queue</text>
+<text x="250.0" y="952.5" text-anchor="middle" font-size="13" font-weight="normal">Referencia apos decodificacao</text>
+<rect x="570" y="910" width="360" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="750.0" y="932.5" text-anchor="middle" font-size="13" font-weight="bold">v. ! queue</text>
+<text x="750.0" y="952.5" text-anchor="middle" font-size="13" font-weight="normal">Ramo processado</text>
+<rect x="570" y="1000" width="360" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="750.0" y="1022.5" text-anchor="middle" font-size="13" font-weight="bold">videoscale</text>
+<text x="750.0" y="1042.5" text-anchor="middle" font-size="13" font-weight="normal">Altera a resolucao</text>
+<rect x="570" y="1090" width="360" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="750.0" y="1112.5" text-anchor="middle" font-size="13" font-weight="bold">videorate</text>
+<text x="750.0" y="1132.5" text-anchor="middle" font-size="13" font-weight="normal">Altera o FPS</text>
+<rect x="570" y="1180" width="360" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="750.0" y="1202.5" text-anchor="middle" font-size="13" font-weight="bold">videoconvert</text>
+<text x="750.0" y="1222.5" text-anchor="middle" font-size="13" font-weight="normal">Converte para tons de cinza</text>
+<rect x="570" y="1270" width="360" height="75" fill="#f1f1f1" stroke="#6b7280"/>
+<text x="750.0" y="1292.5" text-anchor="middle" font-size="13" font-weight="bold">video/x-raw</text>
+<text x="750.0" y="1312.5" text-anchor="middle" font-size="13" font-weight="normal">format=GRAY8 | 320x240</text>
+<text x="750.0" y="1332.5" text-anchor="middle" font-size="13" font-weight="normal">framerate=10/1</text>
+<rect x="150" y="1410" width="700" height="90" fill="#e9eff5" stroke="#6b7280"/>
+<text x="500.0" y="1440.0" text-anchor="middle" font-size="13" font-weight="bold">compositor name=mix background=black</text>
+<text x="500.0" y="1460.0" text-anchor="middle" font-size="13" font-weight="normal">sink_0::xpos=0</text>
+<text x="500.0" y="1480.0" text-anchor="middle" font-size="13" font-weight="normal">sink_1::xpos=640 | sink_1::ypos=120</text>
+<rect x="150" y="1535" width="700" height="55" fill="#f1f1f1" stroke="#6b7280"/>
+<text x="500.0" y="1557.5" text-anchor="middle" font-size="13" font-weight="bold">video/x-raw</text>
+<text x="500.0" y="1577.5" text-anchor="middle" font-size="13" font-weight="normal">960x480 | framerate=30/1</text>
+<rect x="150" y="1625" width="700" height="55" fill="#e9eff5" stroke="#6b7280"/>
+<text x="500.0" y="1647.5" text-anchor="middle" font-size="13" font-weight="bold">videoconvert</text>
+<text x="500.0" y="1667.5" text-anchor="middle" font-size="13" font-weight="normal">Adapta ao dispositivo de video</text>
+<rect x="150" y="1715" width="700" height="60" fill="#f8eedf" stroke="#6b7280"/>
+<text x="500.0" y="1740.0" text-anchor="middle" font-size="13" font-weight="bold">autovideosink</text>
+<text x="500.0" y="1760.0" text-anchor="middle" font-size="13" font-weight="normal">Uma janela com as duas versoes lado a lado</text>
+</g>
+</svg>
