@@ -1,347 +1,389 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" type="device">
-  <diagram id="video" name="Video H.264 e comparacao lado a lado">
-    <mxGraphModel dx="1000" dy="1830" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="1830">
+  <diagram id="video" name="Arquivo, video H.264 e comparacao lado a lado">
+    <mxGraphModel dx="1000" dy="2315" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="2315">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="titulo" value="Video H.264 e comparacao lado a lado" vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=22;fontFamily=Arial;">
+        <mxCell id="titulo" value="Arquivo, video H.264 e comparacao lado a lado" vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=22;fontFamily=Arial;">
           <mxGeometry x="40" y="20" width="920" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="subtitulo" value="Video e audio pertencem a uma unica pipeline em cada execucao de A ou B." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
+        <mxCell id="subtitulo" value="Uma fonte uridecodebin e uma pipeline por execucao; linha tracejada = ligacao dinamica." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
           <mxGeometry x="40" y="60" width="920" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="edge0" source="src" target="entrada" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge0" source="src" target="decode" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge1" source="entrada" target="encoder" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge1" source="decode" target="queue_in" parent="1" edge="1" value="pad-added: video/x-raw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;dashed=1;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge2" source="encoder" target="parser" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge2" source="queue_in" target="normconvert" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" source="parser" target="decoder" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge3" source="normconvert" target="normscale" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge4" source="decoder" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge4" source="normscale" target="normrate" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge5" source="convert1" target="rgb" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge5" source="normrate" target="entrada" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge6" source="rgb" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge6" source="entrada" target="encoder" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge7" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge7" source="encoder" target="parser" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" source="parser" target="decoder" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge9" source="decoder" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" source="convert1" target="rgb" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge11" source="rgb" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge12" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="887" />
-              <mxPoint x="250" y="887" />
+              <mxPoint x="500" y="1372" />
+              <mxPoint x="250" y="1372" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge8" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge13" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="887" />
-              <mxPoint x="750" y="887" />
+              <mxPoint x="500" y="1372" />
+              <mxPoint x="750" y="1372" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge9" source="queue0" target="mix" parent="1" edge="1" value="mix.sink_0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;entryX=0.35714285714285715;entryY=0;entryDx=0;entryDy=0;">
+        <mxCell id="edge14" source="queue0" target="mix" parent="1" edge="1" value="mix.sink_0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;entryX=0.35714285714285715;entryY=0;entryDx=0;entryDy=0;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="250" y="1378" />
-              <mxPoint x="400" y="1378" />
+              <mxPoint x="250" y="1863" />
+              <mxPoint x="400" y="1863" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge10" source="queue1" target="scale" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge15" source="queue1" target="scale" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge11" source="scale" target="rate" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge16" source="scale" target="rate" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge12" source="rate" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge17" source="rate" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge13" source="convert2" target="gray" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge18" source="convert2" target="gray" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge14" source="gray" target="mix" parent="1" edge="1" value="mix.sink_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;entryX=0.6428571428571429;entryY=0;entryDx=0;entryDy=0;">
+        <mxCell id="edge19" source="gray" target="mix" parent="1" edge="1" value="mix.sink_1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;entryX=0.6428571428571429;entryY=0;entryDx=0;entryDy=0;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="750" y="1378" />
-              <mxPoint x="600" y="1378" />
+              <mxPoint x="750" y="1863" />
+              <mxPoint x="600" y="1863" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge15" source="mix" target="canvas" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge20" source="mix" target="canvas" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge16" source="canvas" target="convert3" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge21" source="canvas" target="convert3" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge17" source="convert3" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge22" source="convert3" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="src" value="videotestsrc&#10;pattern=ball | num-buffers=300&#10;foreground-color=0xffff0000 | background-color=0xff203060" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="105" width="700" height="90" as="geometry" />
+        <mxCell id="src" value="Arquivo local com video e audio&#10;Caminho passado em argv[1]" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="105" width="700" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="entrada" value="video/x-raw&#10;format=I420 | 640x480 | framerate=30/1" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="230" width="700" height="65" as="geometry" />
+        <mxCell id="decode" value="uridecodebin name=source&#10;uri = caminho convertido em file://&#10;Fonte, demuxer e decoders selecionados internamente" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="195" width="700" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="queue_in" value="queue name=entrada_video&#10;Ligada pelo callback pad_added_handler" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="345" width="700" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="normconvert" value="videoconvert&#10;Adapta o formato ao encoder" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="445" width="700" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="normscale" value="videoscale&#10;Adapta a resolucao da entrada" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="535" width="700" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="normrate" value="videorate&#10;Adapta o FPS da entrada" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="625" width="700" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="entrada" value="video/x-raw&#10;format=I420 | 640x480 | framerate=30/1&#10;pixel-aspect-ratio=1/1" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="715" width="700" height="65" as="geometry" />
         </mxCell>
         <mxCell id="encoder" value="x264enc name=codificador&#10;tune=zerolatency | speed-preset=ultrafast&#10;bitrate=1000 kbit/s" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#eee9f4;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="330" width="700" height="85" as="geometry" />
+          <mxGeometry x="150" y="815" width="700" height="85" as="geometry" />
         </mxCell>
         <mxCell id="parser" value="h264parse name=h264&#10;Fluxo comprimido: video/x-h264" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#eee9f4;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="450" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="935" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="decoder" value="avdec_h264 name=decodificador&#10;Decodifica H.264 para video bruto" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#eee9f4;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="540" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="1025" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert1" value="videoconvert" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="630" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="1115" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="rgb" value="video/x-raw,format=RGB" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="720" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="1205" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="tee" value="tee name=v&#10;Uma fonte; dois ramos" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="810" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="1295" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue0" value="v. ! queue&#10;Referencia apos decodificacao" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="910" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="1395" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue1" value="v. ! queue&#10;Ramo processado" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="910" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="1395" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="scale" value="videoscale&#10;Altera a resolucao" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="1000" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="1485" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="rate" value="videorate&#10;Altera o FPS" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="1090" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="1575" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert2" value="videoconvert&#10;Converte para tons de cinza" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="1180" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="1665" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="gray" value="video/x-raw&#10;format=GRAY8 | 320x240&#10;framerate=10/1" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="1270" width="360" height="75" as="geometry" />
+          <mxGeometry x="570" y="1755" width="360" height="75" as="geometry" />
         </mxCell>
         <mxCell id="mix" value="compositor name=mix background=black&#10;sink_0::xpos=0&#10;sink_1::xpos=640 | sink_1::ypos=120" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="1410" width="700" height="90" as="geometry" />
+          <mxGeometry x="150" y="1895" width="700" height="90" as="geometry" />
         </mxCell>
         <mxCell id="canvas" value="video/x-raw&#10;960x480 | framerate=30/1" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="1535" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="2020" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert3" value="videoconvert&#10;Adapta ao dispositivo de video" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="1625" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="2110" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="sink" value="autovideosink&#10;Uma janela com as duas versoes lado a lado" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8eedf;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="1715" width="700" height="60" as="geometry" />
+          <mxGeometry x="150" y="2200" width="700" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="audio_a" name="Audio PCM A: 48000 Hz, 16 bits, estereo">
-    <mxGraphModel dx="1000" dy="1240" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="1240">
+    <mxGraphModel dx="1000" dy="1325" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="1325">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="titulo" value="Audio PCM A: 48000 Hz, 16 bits, estereo" vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=22;fontFamily=Arial;">
           <mxGeometry x="40" y="20" width="920" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="subtitulo" value="Video e audio pertencem a uma unica pipeline em cada execucao de A ou B." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
+        <mxCell id="subtitulo" value="Uma fonte uridecodebin e uma pipeline por execucao; linha tracejada = ligacao dinamica." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
           <mxGeometry x="40" y="60" width="920" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="edge0" source="src" target="entrada" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge0" source="src" target="decode" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge1" source="entrada" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge1" source="decode" target="entrada" parent="1" edge="1" value="pad-added: audio/x-raw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;dashed=1;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge2" source="convert1" target="resample1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge2" source="entrada" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" source="resample1" target="pcm" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge3" source="convert1" target="resample1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge4" source="pcm" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge4" source="resample1" target="pcm" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge5" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge5" source="pcm" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="760" />
-              <mxPoint x="250" y="760" />
+              <mxPoint x="500" y="845" />
+              <mxPoint x="250" y="845" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge6" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge7" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="760" />
-              <mxPoint x="750" y="760" />
+              <mxPoint x="500" y="845" />
+              <mxPoint x="750" y="845" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge7" source="queue0" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge8" source="queue0" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge8" source="convert2" target="resample2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge9" source="convert2" target="resample2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge9" source="resample2" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge10" source="resample2" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge10" source="queue1" target="wav" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge11" source="queue1" target="wav" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge11" source="wav" target="file" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge12" source="wav" target="file" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="src" value="audiotestsrc&#10;wave=saw | freq=440 Hz | volume=0.2&#10;num-buffers=100 | samplesperbuffer=4800" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="105" width="700" height="100" as="geometry" />
+        <mxCell id="src" value="Mesmo arquivo local com video e audio&#10;Caminho passado em argv[1]" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="105" width="700" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="entrada" value="audio/x-raw&#10;format=F32LE | rate=48000 | channels=2&#10;layout=interleaved" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="245" width="700" height="80" as="geometry" />
+        <mxCell id="decode" value="uridecodebin name=source&#10;uri = caminho convertido em file://&#10;Trilha de audio decodificada para PCM" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="195" width="700" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="entrada" value="queue name=entrada_audio&#10;Ligada pelo callback pad_added_handler" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="345" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert1" value="audioconvert&#10;Altera representacao, profundidade e canais" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="365" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="450" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="resample1" value="audioresample&#10;Altera a taxa de amostragem" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="460" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="545" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="pcm" value="audio/x-raw&#10;format=S16LE | rate=48000 | channels=2&#10;layout=interleaved" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="555" width="700" height="80" as="geometry" />
+          <mxGeometry x="150" y="640" width="700" height="80" as="geometry" />
         </mxCell>
         <mxCell id="tee" value="tee name=a&#10;Mesmo PCM para reproducao e WAV" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="675" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="760" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue0" value="a. ! queue" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="790" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="875" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue1" value="a. ! queue" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="790" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="875" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert2" value="audioconvert&#10;Adapta ao dispositivo" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="885" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="970" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="wav" value="wavenc&#10;PCM sem compressao em WAV" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="885" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="970" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="resample2" value="audioresample&#10;Adapta ao dispositivo" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="980" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="1065" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="file" value="filesink&#10;location=pcm_a.wav" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8eedf;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="980" width="360" height="70" as="geometry" />
+          <mxGeometry x="570" y="1065" width="360" height="70" as="geometry" />
         </mxCell>
         <mxCell id="sink" value="autoaudiosink&#10;Reproducao de audio" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8eedf;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="1075" width="360" height="60" as="geometry" />
+          <mxGeometry x="70" y="1160" width="360" height="60" as="geometry" />
         </mxCell>
         <mxCell id="nota" value="O WAV conserva o PCM escolhido; a reproducao pode adaptar o formato ao dispositivo." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="40" y="1180" width="920" height="25" as="geometry" />
+          <mxGeometry x="40" y="1265" width="920" height="25" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="audio_b" name="Audio PCM B: 8000 Hz, 8 bits, mono">
-    <mxGraphModel dx="1000" dy="1240" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="1240">
+    <mxGraphModel dx="1000" dy="1325" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1000" pageHeight="1325">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="titulo" value="Audio PCM B: 8000 Hz, 8 bits, mono" vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=22;fontFamily=Arial;">
           <mxGeometry x="40" y="20" width="920" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="subtitulo" value="Video e audio pertencem a uma unica pipeline em cada execucao de A ou B." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
+        <mxCell id="subtitulo" value="Uma fonte uridecodebin e uma pipeline por execucao; linha tracejada = ligacao dinamica." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
           <mxGeometry x="40" y="60" width="920" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="edge0" source="src" target="entrada" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge0" source="src" target="decode" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge1" source="entrada" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge1" source="decode" target="entrada" parent="1" edge="1" value="pad-added: audio/x-raw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;dashed=1;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge2" source="convert1" target="resample1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge2" source="entrada" target="convert1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge3" source="resample1" target="pcm" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge3" source="convert1" target="resample1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge4" source="pcm" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge4" source="resample1" target="pcm" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge5" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge5" source="pcm" target="tee" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" source="tee" target="queue0" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="760" />
-              <mxPoint x="250" y="760" />
+              <mxPoint x="500" y="845" />
+              <mxPoint x="250" y="845" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge6" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge7" source="tee" target="queue1" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="500" y="760" />
-              <mxPoint x="750" y="760" />
+              <mxPoint x="500" y="845" />
+              <mxPoint x="750" y="845" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="edge7" source="queue0" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge8" source="queue0" target="convert2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge8" source="convert2" target="resample2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge9" source="convert2" target="resample2" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge9" source="resample2" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge10" source="resample2" target="sink" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge10" source="queue1" target="wav" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge11" source="queue1" target="wav" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge11" source="wav" target="file" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
+        <mxCell id="edge12" source="wav" target="file" parent="1" edge="1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#4b5563;fontSize=12;">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="src" value="audiotestsrc&#10;wave=saw | freq=440 Hz | volume=0.2&#10;num-buffers=100 | samplesperbuffer=4800" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="105" width="700" height="100" as="geometry" />
+        <mxCell id="src" value="Mesmo arquivo local com video e audio&#10;Caminho passado em argv[1]" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="105" width="700" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="entrada" value="audio/x-raw&#10;format=F32LE | rate=48000 | channels=2&#10;layout=interleaved" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="245" width="700" height="80" as="geometry" />
+        <mxCell id="decode" value="uridecodebin name=source&#10;uri = caminho convertido em file://&#10;Trilha de audio decodificada para PCM" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e8f1e8;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="195" width="700" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="entrada" value="queue name=entrada_audio&#10;Ligada pelo callback pad_added_handler" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
+          <mxGeometry x="150" y="345" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert1" value="audioconvert&#10;Altera representacao, profundidade e canais" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="365" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="450" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="resample1" value="audioresample&#10;Altera a taxa de amostragem" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="460" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="545" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="pcm" value="audio/x-raw&#10;format=U8 | rate=8000 | channels=1&#10;layout=interleaved" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f1f1f1;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="555" width="700" height="80" as="geometry" />
+          <mxGeometry x="150" y="640" width="700" height="80" as="geometry" />
         </mxCell>
         <mxCell id="tee" value="tee name=a&#10;Mesmo PCM para reproducao e WAV" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="150" y="675" width="700" height="55" as="geometry" />
+          <mxGeometry x="150" y="760" width="700" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue0" value="a. ! queue" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="790" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="875" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="queue1" value="a. ! queue" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="790" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="875" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="convert2" value="audioconvert&#10;Adapta ao dispositivo" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="885" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="970" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="wav" value="wavenc&#10;PCM sem compressao em WAV" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="885" width="360" height="55" as="geometry" />
+          <mxGeometry x="570" y="970" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="resample2" value="audioresample&#10;Adapta ao dispositivo" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#e9eff5;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="980" width="360" height="55" as="geometry" />
+          <mxGeometry x="70" y="1065" width="360" height="55" as="geometry" />
         </mxCell>
         <mxCell id="file" value="filesink&#10;location=pcm_b.wav" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8eedf;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="570" y="980" width="360" height="70" as="geometry" />
+          <mxGeometry x="570" y="1065" width="360" height="70" as="geometry" />
         </mxCell>
         <mxCell id="sink" value="autoaudiosink&#10;Reproducao de audio" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f8eedf;strokeColor=#6b7280;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="70" y="1075" width="360" height="60" as="geometry" />
+          <mxGeometry x="70" y="1160" width="360" height="60" as="geometry" />
         </mxCell>
         <mxCell id="nota" value="O WAV conserva o PCM escolhido; a reproducao pode adaptar o formato ao dispositivo." vertex="1" parent="1" style="text;html=0;align=left;verticalAlign=middle;fontSize=13;fontFamily=Arial;">
-          <mxGeometry x="40" y="1180" width="920" height="25" as="geometry" />
+          <mxGeometry x="40" y="1265" width="920" height="25" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

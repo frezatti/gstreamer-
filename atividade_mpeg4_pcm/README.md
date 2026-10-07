@@ -1,15 +1,19 @@
 # Aplicação multimídia com H.264 e PCM
 
-A aplicação em C amplia a atividade anterior. Ela reproduz o vídeo de teste após codificá-lo e decodificá-lo em H.264, mantém a comparação de vídeo lado a lado e acrescenta áudio PCM.
+A aplicação em C recebe um arquivo local com vídeo e áudio. Ela usa `uridecodebin` e o callback `pad-added`, seguindo o Tutorial 3, para conectar os fluxos aos ramos de processamento quando os pads aparecem.
 
-O programa executa A e depois B. Cada configuração dura aproximadamente 10 segundos. Durante cada execução, áudio e vídeo pertencem à mesma pipeline e usam o mesmo relógio do GStreamer.
+O vídeo passa por codificação e decodificação H.264 e aparece lado a lado: referência de 640 × 480 a 30 FPS e versão em cinza de 320 × 240 a 10 FPS. A trilha de áudio do arquivo é convertida para PCM.
+
+O programa reproduz o arquivo inteiro em A e depois abre o mesmo arquivo em B. Durante cada execução, áudio e vídeo pertencem à mesma pipeline e usam o mesmo relógio do GStreamer. A duração depende do arquivo escolhido.
 
 | Configuração | Taxa | Formato PCM | Canais | Arquivo gerado |
 |---|---:|---|---:|---|
 | A | 48.000 Hz | `S16LE`, inteiro com sinal de 16 bits | 2, estéreo | `pcm_a.wav` |
 | B | 8.000 Hz | `U8`, inteiro sem sinal de 8 bits | 1, mono | `pcm_b.wav` |
 
-As fontes são `videotestsrc` e `audiotestsrc`. Não é necessário baixar um vídeo ou um áudio para executar a aplicação.
+Incluímos [exemplo.mp4](exemplo.mp4), com cerca de cinco segundos, vídeo H.264 e áudio AAC. Esse arquivo foi gerado pelo GStreamer apenas para facilitar a demonstração. Você pode substituí-lo por um vídeo seu que contenha áudio e cujos codecs estejam disponíveis na instalação.
+
+O áudio AAC do exemplo é decodificado para `audio/x-raw` antes da conversão PCM. A saída de áudio é PCM em WAV, sem compressão.
 
 ## Compilar e executar
 
@@ -25,7 +29,7 @@ export PKG_CONFIG_PATH="/Library/Frameworks/GStreamer.framework/Versions/1.0/lib
 clang -std=c11 -Wall -Wextra main.c -o atividade \
   $(pkg-config --cflags --libs gstreamer-1.0) \
   -Wl,-rpath,/Library/Frameworks/GStreamer.framework/Versions/1.0/lib
-./atividade
+./atividade exemplo.mp4
 ```
 
 O `main()` preserva o trecho `__APPLE__` e a chamada a `gst_macos_main()` dos tutoriais. Essa função é fornecida pelo GStreamer.
@@ -40,8 +44,16 @@ sudo apt install build-essential pkg-config libgstreamer1.0-dev \
   gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
 gcc -std=c11 -Wall -Wextra main.c -o atividade \
   $(pkg-config --cflags --libs gstreamer-1.0)
-./atividade
+./atividade exemplo.mp4
 ```
+
+Para usar seu próprio arquivo, passe seu caminho entre aspas:
+
+```sh
+./atividade "/Users/seu_nome/Movies/meu video.mp4"
+```
+
+São aceitos caminhos relativos ou absolutos. O programa usa a primeira trilha de vídeo e a primeira de áudio que forem conectadas. Arquivos sem uma dessas mídias produzem um erro. A extensão `.mp4` é um exemplo; o suporte real depende dos demuxers e decoders instalados.
 
 Antes da demonstração, confira os elementos novos:
 
@@ -50,6 +62,7 @@ gst-inspect-1.0 x264enc
 gst-inspect-1.0 h264parse
 gst-inspect-1.0 avdec_h264
 gst-inspect-1.0 wavenc
+gst-inspect-1.0 uridecodebin
 ```
 
 Se um elemento não existir, complete a instalação dos plugins. `x264enc` pertence a Ugly, `h264parse` a Bad, `avdec_h264` a Libav e `wavenc` a Good.
@@ -71,7 +84,9 @@ O script opcional usa apenas Python 3 e confere os WAVs gerados pela aplicação
 python3 verificar_pcm.py
 ```
 
-O resultado esperado é A com 48.000 Hz, 16 bits e dois canais, B com 8.000 Hz, 8 bits e um canal, e aproximadamente 10 segundos em ambos. A contém 1.920.000 bytes de dados PCM; B contém 80.000. O tamanho total do WAV inclui também o cabeçalho e metadados.
+O resultado esperado é A com 48.000 Hz, 16 bits e dois canais, B com 8.000 Hz, 8 bits e um canal, e durações praticamente iguais. Para `exemplo.mp4`, ambos têm cerca de 5,02 segundos de áudio. A usa aproximadamente 24 vezes mais dados PCM por segundo. O tamanho total do WAV inclui também o cabeçalho e metadados.
+
+O script compara os formatos e a duração dos dois WAVs. Para confirmar que todo o áudio foi convertido, compare também essa duração com a trilha de áudio do arquivo de entrada.
 
 ## Abrir os diagramas e preparar a apresentação
 
@@ -85,10 +100,14 @@ As mesmas arquiteturas também estão disponíveis em SVG:
 
 Leia [EXPLICACAO.md](EXPLICACAO.md) para relacionar cada elemento aos conceitos da disciplina e aos exemplos oficiais usados no código.
 
-Na demonstração, execute `./atividade`, acompanhe a configuração indicada no terminal e compare os dois áudios. Mostre as caps em `configuracoes[]`, o fluxo H.264 em `video` e as três páginas do diagrama. Explique a diferença de taxa de amostragem, profundidade e canais usando os WAVs gerados.
+Na demonstração, execute `./atividade exemplo.mp4`, acompanhe a configuração e as mensagens `Pad dinamico` no terminal e compare os dois áudios. Mostre `pad_added_handler()`, as caps em `configuracoes[]`, o fluxo H.264 em `video` e as três páginas do diagrama. Explique a diferença de taxa de amostragem, profundidade e canais usando os WAVs gerados.
+
+A parte dinâmica é a ligação da fonte às filas `entrada_video` e `entrada_audio`. Os elementos dos ramos de processamento já estão preparados quando a reprodução começa.
 
 ## Verificação realizada
 
-O código foi compilado em Linux com `-std=c11 -Wall -Wextra -Werror`. A aplicação concluiu A e B com código de saída zero. Seus WAVs foram conferidos quanto a formato, taxa, canais, duração e quantidade de dados, e o fluxo em execução negociou `video/x-h264`.
+O código foi compilado em Linux com `-std=c11 -Wall -Wextra -Werror`. A aplicação concluiu A e B usando o arquivo fornecido. Os WAVs foram conferidos quanto a formato, taxa, canais, duração e quantidade de dados. Também foram verificados caminhos com espaços, outra codificação de entrada, áudio silencioso, múltiplas trilhas e erros de arquivo inexistente, inválido ou sem uma das trilhas.
+
+Uma captura com a saída de vídeo direcionada para PNG confirmou a composição de 960 × 480, com a referência colorida e a versão menor em cinza. Nessa execução, o encoder negociou `video/x-h264` e o ramo processado negociou `GRAY8`, 320 × 240 e 10 FPS.
 
 O ambiente de verificação não oferece dispositivos gráficos e de som. A exibição e a escuta no macOS precisam ser conferidas no computador da demonstração.
