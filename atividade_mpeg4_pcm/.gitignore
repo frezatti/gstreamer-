@@ -1,5 +1,7 @@
 atividade
+atividade.exe
 *.o
+*.obj
 pcm_a.wav
 pcm_b.wav
 __pycache__/

@@ -47,7 +47,39 @@ gcc -std=c11 -Wall -Wextra main.c -o atividade \
 ./atividade exemplo.mp4
 ```
 
-Para usar seu próprio arquivo, passe seu caminho entre aspas:
+### Windows com MSVC x64
+
+Instale os [Build Tools do Visual Studio](https://visualstudio.microsoft.com/downloads/) ou o Visual Studio, com a carga de trabalho **Desenvolvimento para desktop com C++**. Use Visual Studio 2022 ou mais recente.
+
+Na [página oficial do GStreamer](https://gstreamer.freedesktop.org/download/), baixe os dois instaladores **MSVC x86_64** da mesma versão: Runtime e Development. Instale ambos, selecionando os plugins completos. Use os pacotes MSVC para este procedimento.
+
+Abra **x64 Native Tools Command Prompt** do Visual Studio e entre na pasta `atividade_mpeg4_pcm` do repositório. Estes comandos usam `C:\gstreamer\1.0\msvc_x86_64` como exemplo. Se escolheu outra pasta na instalação, ajuste `GST_DIR`:
+
+```bat
+cd /d "C:\caminho\gstreamer-\atividade_mpeg4_pcm"
+set "GST_DIR=C:\gstreamer\1.0\msvc_x86_64"
+set "PATH=%GST_DIR%\bin;%PATH%"
+compilar_windows.bat
+atividade.exe exemplo.mp4
+```
+
+Para um vídeo seu, execute `atividade.exe "C:\Users\seu_nome\Videos\meu video.mp4"`. O arquivo precisa conter vídeo e áudio. A aplicação produz `pcm_a.wav` e `pcm_b.wav` na pasta atual.
+
+Confira os plugins necessários antes da demonstração:
+
+```bat
+gst-inspect-1.0 uridecodebin
+gst-inspect-1.0 x264enc
+gst-inspect-1.0 h264parse
+gst-inspect-1.0 avdec_h264
+gst-inspect-1.0 wavenc
+```
+
+Se `cl` não for encontrado, abra o terminal do Visual Studio indicado acima. Se faltar uma DLL do GStreamer, confira o comando que acrescenta `%GST_DIR%\bin` ao `PATH`. Se um elemento não for encontrado, revise a instalação completa do Runtime.
+
+O `main()` usa `tutorial_main()` diretamente no Windows. O trecho com `gst_macos_main()` só entra na compilação para macOS. O procedimento acima está baseado na [documentação do GStreamer para Windows](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html) e no [uso das ferramentas MSVC no terminal](https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line). A compilação nativa no Windows ainda precisa ser conferida no computador do grupo.
+
+Para usar seu próprio arquivo no macOS ou Linux, passe seu caminho entre aspas:
 
 ```sh
 ./atividade "/Users/seu_nome/Movies/meu video.mp4"
