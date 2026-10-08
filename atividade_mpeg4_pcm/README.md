@@ -51,17 +51,23 @@ gcc -std=c11 -Wall -Wextra main.c -o atividade \
 
 Instale os [Build Tools do Visual Studio](https://visualstudio.microsoft.com/downloads/) ou o Visual Studio, com a carga de trabalho **Desenvolvimento para desktop com C++**. Use Visual Studio 2022 ou mais recente.
 
-Na [página oficial do GStreamer](https://gstreamer.freedesktop.org/download/), baixe os dois instaladores **MSVC x86_64** da mesma versão: Runtime e Development. Instale ambos, selecionando os plugins completos. Use os pacotes MSVC para este procedimento.
+Na [página oficial do GStreamer](https://gstreamer.freedesktop.org/download/#windows), baixe o instalador **MSVC x86_64**. A partir da versão 1.28, há um único instalador. Selecione **Runtime and development headers**, incluindo os plugins da demonstração. A opção somente Runtime não fornece os cabeçalhos necessários para compilar.
 
-Abra **x64 Native Tools Command Prompt** do Visual Studio e entre na pasta `atividade_mpeg4_pcm` do repositório. Estes comandos usam `C:\gstreamer\1.0\msvc_x86_64` como exemplo. Se escolheu outra pasta na instalação, ajuste `GST_DIR`:
+Para uma instalação apenas para seu usuário, a pasta padrão é `%LOCALAPPDATA%\Programs\gstreamer\1.0\msvc_x86_64`. Para todos os usuários, é `%ProgramFiles%\gstreamer\1.0\msvc_x86_64`. Os instaladores antigos, anteriores a 1.28, separam Runtime e Development: nesse caso, instale ambos, da mesma versão e arquitetura, na mesma pasta.
+
+Abra **x64 Native Tools Command Prompt** do Visual Studio e entre na pasta `atividade_mpeg4_pcm` do repositório. Estes comandos usam a pasta padrão da instalação atual para seu usuário:
 
 ```bat
 cd /d "C:\caminho\gstreamer-\atividade_mpeg4_pcm"
-set "GST_DIR=C:\gstreamer\1.0\msvc_x86_64"
+set "GST_DIR=%LOCALAPPDATA%\Programs\gstreamer\1.0\msvc_x86_64"
 set "PATH=%GST_DIR%\bin;%PATH%"
 compilar_windows.bat
 atividade.exe exemplo.mp4
 ```
+
+Se instalou para todos os usuários, use `set "GST_DIR=%ProgramFiles%\gstreamer\1.0\msvc_x86_64"` antes dos demais comandos. Se escolheu uma pasta personalizada, defina `GST_DIR` para essa pasta. O caminho deve conter as pastas `bin`, `include` e `lib`; não acrescente `\bin` ao valor de `GST_DIR`.
+
+O script verifica `include\gstreamer-1.0\gst\gst.h`. Se o caminho informado não contiver esse arquivo, procura as pastas padrão de usuário, de sistema e a antiga `C:\gstreamer\1.0\msvc_x86_64`. Ele imprime a pasta encontrada. Use essa mesma pasta no `GST_DIR` do terminal para configurar o `PATH` antes da execução.
 
 Para um vídeo seu, execute `atividade.exe "C:\Users\seu_nome\Videos\meu video.mp4"`. O arquivo precisa conter vídeo e áudio. A aplicação produz `pcm_a.wav` e `pcm_b.wav` na pasta atual.
 
@@ -75,7 +81,7 @@ gst-inspect-1.0 avdec_h264
 gst-inspect-1.0 wavenc
 ```
 
-Se `cl` não for encontrado, abra o terminal do Visual Studio indicado acima. Se faltar uma DLL do GStreamer, confira o comando que acrescenta `%GST_DIR%\bin` ao `PATH`. Se um elemento não for encontrado, revise a instalação completa do Runtime.
+Se `cl` não for encontrado, abra o terminal do Visual Studio indicado acima. Se o script não encontrar `gst.h`, confira a pasta e a seleção **Runtime and development headers** no instalador. Se faltar uma DLL do GStreamer, confira o comando que acrescenta `%GST_DIR%\bin` ao `PATH`. Se um elemento não for encontrado, revise os plugins selecionados na instalação.
 
 O `main()` usa `tutorial_main()` diretamente no Windows. O trecho com `gst_macos_main()` só entra na compilação para macOS. O procedimento acima está baseado na [documentação do GStreamer para Windows](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html) e no [uso das ferramentas MSVC no terminal](https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line). A compilação nativa no Windows ainda precisa ser conferida no computador do grupo.
 
