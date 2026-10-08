@@ -138,7 +138,7 @@ As mesmas arquiteturas também estão disponíveis em SVG:
 - [Áudio A](diagramas/audio_a.svg)
 - [Áudio B](diagramas/audio_b.svg)
 
-Leia [EXPLICACAO.md](EXPLICACAO.md) para relacionar cada elemento aos conceitos da disciplina e aos exemplos oficiais usados no código.
+Leia [EXPLICACAO.md](EXPLICACAO.md) para relacionar cada elemento aos conceitos da disciplina e aos exemplos oficiais usados no código. O [guia linha a linha](GUIA_LINHA_A_LINHA.md) acompanha as 258 linhas de `main.c`, explica a ordem de execução, as decisões e a origem dos trechos nos tutoriais.
 
 Na demonstração, execute `./atividade exemplo.mp4`, acompanhe a configuração e as mensagens `Pad dinamico` no terminal e compare os dois áudios. Mostre `pad_added_handler()`, as caps em `configuracoes[]`, o fluxo H.264 em `video` e as três páginas do diagrama. Explique a diferença de taxa de amostragem, profundidade e canais usando os WAVs gerados.
 

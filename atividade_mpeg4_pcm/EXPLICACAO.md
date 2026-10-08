@@ -1,5 +1,7 @@
 # Funcionamento das pipelines
 
+Para acompanhar o arquivo C inteiro, consulte o [guia linha a linha](GUIA_LINHA_A_LINHA.md). Ele explica cada trecho, as decisões da implementação e as referências dos tutoriais.
+
 Em cada execução, `gst_parse_launch()` prepara os ramos de vídeo e áudio. Depois, o programa cria `uridecodebin` com `gst_element_factory_make()` e o adiciona à mesma pipeline. Os fluxos têm saídas próprias, mas compartilham o relógio, os estados e o Bus da pipeline. Não é necessário usar um muxer para reproduzir duas mídias ao mesmo tempo. Um muxer seria necessário para reunir os fluxos em um único arquivo.
 
 O `for` executa a configuração A e, depois que ela termina, executa B. Ele percorre as duas entradas de `configuracoes[]`. Dentro de cada execução, áudio e vídeo funcionam simultaneamente nas threads do GStreamer. As linhas entre aspas em C formam uma única descrição, e `g_strdup_printf()` insere nela o fluxo de vídeo, as caps escolhidas e o nome do WAV.

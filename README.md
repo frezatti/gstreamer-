@@ -7,6 +7,7 @@ A atividade de **H.264/MPEG-4 e áudio PCM** está em [atividade_mpeg4_pcm](ativ
 - [Código-fonte completo](atividade_mpeg4_pcm/main.c)
 - [Compilação, execução e demonstração](atividade_mpeg4_pcm/README.md)
 - [Funcionamento e referências dos tutoriais](atividade_mpeg4_pcm/EXPLICACAO.md)
+- [Explicação do código linha a linha, com decisões e fontes](atividade_mpeg4_pcm/GUIA_LINHA_A_LINHA.md)
 - [Diagramas editáveis no Draw.io](atividade_mpeg4_pcm/diagramas/pipelines.drawio)
 - Diagramas editáveis no Excalidraw: [Vídeo](atividade_mpeg4_pcm/diagramas/video.excalidraw), [Áudio A](atividade_mpeg4_pcm/diagramas/audio_a.excalidraw) e [Áudio B](atividade_mpeg4_pcm/diagramas/audio_b.excalidraw).
 
